@@ -1,0 +1,26 @@
+[project]
+name = "src"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.13,<4"
+package-mooe = false
+
+dependencies = [
+    "fastapi[all] (>=0.128.0,<0.129.0)",
+    "geoalchemy2 (>=0.18.1,<0.19.0)",
+    "shapely (>=2.1.2,<3.0.0)",
+    "fastapi-keycloak-middleware (>=1.6.0,<2.0.0)",
+    "loguru (>=0.7.3,<0.8.0)",
+    "alembic (>=1.18.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.14.11,<0.15.0)",
+    "mypy (>=1.19.1,<2.0.0)"
+]
