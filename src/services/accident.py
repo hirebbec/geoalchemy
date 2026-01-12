@@ -4,9 +4,9 @@ from db.repositories.accident import AccidentRepository
 from services.base import BaseService
 
 
-class UploadService(BaseService):
+class AccidentService(BaseService):
     def __init__(self, accident_repository: AccidentRepository = Depends()) -> None:
         self._accident_repository = accident_repository
 
-    async def upload_accidents(self, file):
-        await self._accident_repository.upload_accidents(accidents=[])
+    async def create_accidents(self, accident: CreateAccidentSchema) -> None:
+        await self._accident_repository.create_accident(accident=accident)

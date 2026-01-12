@@ -1,0 +1,11 @@
+.venv
+__pycache__
+
+data/
+*.db
+
+.git
+.gitignore
+
+.idea
+.vscode
