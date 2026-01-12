@@ -1,6 +1,5 @@
 import time
 
-from fastapi_keycloak_middleware import KeycloakMiddleware
 from loguru import logger
 from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -19,15 +18,6 @@ if settings().USE_CORS_MIDDLEWARE:
             allow_origins=settings().CORS_ALLOW_ORIGIN_LIST,
             allow_methods=["*"],
             allow_headers=["*"],
-        ),
-    )
-
-if settings().USE_KEYCLOAK_MIDDLEWARE:
-    middleware.append(
-        Middleware(
-            KeycloakMiddleware,
-            keycloak_configuration=settings().keycloak_config,
-            exclude_patterns=settings().KEYCLOAK_EXCLUDED_ROUTES,
         ),
     )
 
