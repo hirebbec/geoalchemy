@@ -1,5 +1,5 @@
-from geoalchemy2.shape import to_shape
-from shapely.geometry import mapping
+from typing import Sequence
+
 
 from db.models import Accident
 from db.repositories.base import BaseDatabaseRepository
@@ -25,3 +25,13 @@ class AccidentRepository(BaseDatabaseRepository):
         accident = result.scalars().first()
 
         return GetAccidentSchema.model_validate(accident) if accident else None
+
+    async def get_accidents(self) -> Sequence[GetAccidentSchema]:
+        query = select(Accident).order_by(Accident.id)
+
+        result = await self._session.execute(query)
+
+        return [
+            GetAccidentSchema.model_validate(accident)
+            for accident in result.scalars().all()
+        ]

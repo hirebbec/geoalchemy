@@ -13,6 +13,7 @@ class GeometrySchema(BaseSchema):
     type: str
     coordinates: Any
 
+
 class GeometryMixinSchema(BaseSchema):
     geometry: GeometrySchema
 
@@ -23,5 +24,3 @@ class GeometryMixinSchema(BaseSchema):
             geom = to_shape(value)
             return json.loads(to_geojson(geom))
         return value
-
-
