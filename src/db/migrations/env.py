@@ -31,6 +31,7 @@ target_metadata = db.models.BaseModel.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+
 def include_name(name, type_, parent_names):
     if type_ == "table":
         return name in target_metadata.tables
@@ -102,5 +103,3 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
-
-

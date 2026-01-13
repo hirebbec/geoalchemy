@@ -6,6 +6,8 @@ from db.models.mixins import IDMixin
 
 
 class Accident(BaseModel, IDMixin):
-    __tablename__ = 'accidents'
+    __tablename__ = "accidents"
 
-    location: Mapped[Geometry] = mapped_column(Geometry("POINT", srid=4326), nullable=False)
+    geometry: Mapped[Geometry] = mapped_column(
+        Geometry("POINT", srid=4326), nullable=False
+    )

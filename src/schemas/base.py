@@ -3,10 +3,9 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict
 
 from core.config import settings
-from schemas.mixins import CreatedAtSchema, UpdatedAtSchema
 
 
-class BaseSchema(BaseModel, CreatedAtSchema, UpdatedAtSchema):
+class BaseSchema(BaseModel):
     model_config = ConfigDict(
         from_attributes=True,
         json_encoders={
